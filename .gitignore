@@ -1,0 +1,16 @@
+.vscode/
+local_api.py
+node_modules/*
+node_modules
+coverage/
+coverage/*
+dst/index.js
+dst/responseService.js
+dst/s3Service.js
+dst/searchService.js
+build/
+build/app.bundle.js
+build/app.bundle.js.LICENSE.txt
+build/app.bundle.js.map
+target/
+/target/
