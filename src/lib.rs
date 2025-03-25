@@ -161,7 +161,7 @@ pub struct ImagePricing {
 // Product Price IDs
 // ------------------
 
-#[derive(Debug, Serialize, Deserialize, Default)]
+#[derive(Debug, Serialize, Deserialize, Default, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct ProdPriceIds {
     #[serde(default)]
