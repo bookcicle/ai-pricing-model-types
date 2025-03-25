@@ -7,7 +7,7 @@ use std::error::Error as StdError;
 // Top-level JSON
 // ------------------
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct AiPricingJson {
     pub metered_price_id: String,
@@ -18,7 +18,7 @@ pub struct AiPricingJson {
 // Provider
 // ------------------
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Provider {
     pub description: String,
@@ -35,7 +35,7 @@ pub struct Provider {
 // Markup
 // ------------------
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Markup {
     pub image_percentage: f64,
@@ -46,7 +46,7 @@ pub struct Markup {
 // Moderation Threshold
 // ------------------
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct ModerationThreshold {
     pub categories: Categories,
@@ -54,7 +54,7 @@ pub struct ModerationThreshold {
     pub general: f64,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Categories {
     pub hate: bool,
     #[serde(rename = "hate/threatening")]
@@ -69,7 +69,7 @@ pub struct Categories {
     pub sexual_minors: bool,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct CategoryScore {
     #[serde(rename = "harassment/threatening")]
     pub harassment_threatening: f64,
@@ -84,7 +84,7 @@ pub struct CategoryScore {
 // Model (text/image)
 // ------------------
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Model {
     pub added: String,
@@ -128,14 +128,14 @@ pub struct Model {
 // Pricing: text vs. image
 // ------------------
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum Pricing {
     TextPricing(TextPricing),
     ImagePricingVec(Vec<ImagePricing>),
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct TextPricing {
     #[serde(default)]
@@ -149,7 +149,7 @@ pub struct TextPricing {
     pub output_per1_m: f64,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct ImagePricing {
     pub cost_per_image: f64,
@@ -161,7 +161,7 @@ pub struct ImagePricing {
 // Product Price IDs
 // ------------------
 
-#[derive(Debug, Serialize, Deserialize, Default)]
+#[derive(Debug, Serialize, Deserialize, Default, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct ProdPriceIds {
     #[serde(default)]
